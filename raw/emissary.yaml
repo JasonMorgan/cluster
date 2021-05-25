@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress
+  namespace: argocd
+spec:
+  destination:
+    namespace: ambassador
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: ambassador
+    repoURL: https://www.getambassador.io
+    targetRevision: 6.7.9
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+    - ApplyOutOfSyncOnly=true

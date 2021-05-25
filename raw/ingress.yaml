@@ -1,0 +1,19 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: argocd-server-ui
+  namespace: argocd
+spec:
+  host: argocd.aws.59s.io
+  prefix: /
+  service: argocd-server.argocd.svc.cluster.local
+---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: argocd-server-cli
+  namespace: argocd
+spec:
+  host: argocd.aws.59s.io:443
+  prefix: /
+  service: argocd-server.argocd.svc.cluster.local
